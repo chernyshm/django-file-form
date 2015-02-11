@@ -64,7 +64,8 @@ function initFileUploader(options) {
             maxChars: 100,
             responseProperty: 'error',
             enableTooltip: true
-        }
+        },
+        extra_files: []
     };
 
     if (options.text) {
@@ -110,4 +111,17 @@ function initFileUploader(options) {
             }
         );
     }
+
+    $.each(
+        options.extra_files,
+        function(index, value) {
+                $container.fineUploader(
+                    'addCannedFile',
+                    {
+                        name: value['name'],
+                        deleteFileEndpoint: value['delete_url']
+                    }
+                );
+        }
+    );
 }
