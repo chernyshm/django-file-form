@@ -21,7 +21,8 @@ function initUploadFields($form, options) {
                 upload_url: upload_url,
                 delete_url: delete_url,
                 form_id: form_id,
-                multiple: multiple
+                multiple: multiple,
+                extra_files: []
             };
 
             if (options) {
@@ -110,4 +111,17 @@ function initFileUploader(options) {
             }
         );
     }
+
+    $.each(
+        options.extra_files,
+        function(index, value) {
+                $container.fineUploader(
+                    'addCannedFile',
+                    {
+                        name: value['name'],
+                        deleteFileEndpoint: value['delete_url']
+                    }
+                );
+        }
+    );
 }
