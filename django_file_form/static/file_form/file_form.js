@@ -65,7 +65,8 @@ function initFileUploader(options) {
             maxChars: 100,
             responseProperty: 'error',
             enableTooltip: true
-        }
+        },
+        extra_files: []
     };
 
     if (options.text) {
